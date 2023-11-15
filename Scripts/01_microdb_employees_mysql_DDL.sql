@@ -65,3 +65,37 @@ check (salary > 0.000 );
 alter table employees
 add constraint CHECK_employees_update_date
 check (update_date >= creation_date);
+
+
+-- ---------------------------------------------------------------------------
+-- ---------------------------------------------------------------------------
+
+-- ======= Tabla developers ===========
+
+create table developers(
+
+id bigint auto_increment primary key,
+id_employee bigint not null,
+dev_position varchar(100) not null,-- frontend, backend, full stack....
+technology_stack varchar(200) not null, -- java dev...
+work_modality enum('REMOTE', 'HIBRID', 'IN_PERSON') default 'REMOTE',
+certifications varchar(500) not null,
+skills varchar(200) not null,
+creation_date datetime not null,
+update_date datetime not null
+);
+
+
+-- ======= Restricciones Tabla employeers ===========
+
+-- UNIQUE ID
+alter table developers 
+add constraint UNIQUE_developers_id
+unique key (id);
+
+
+
+-- CHECK UPDATE_DATE
+alter table employees
+add constraint CHECK_employees_update_date
+check (update_date >= creation_date);
